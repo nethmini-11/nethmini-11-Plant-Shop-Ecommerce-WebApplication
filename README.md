@@ -1,6 +1,8 @@
-# nethmini-11-Plant-Shop-Ecommerce-WebApplication
+# Plant-Shop-Ecommerce-WebApplication
 
-This is a simple ecommerce web application for plant selling 🌱
+This is a simple role based ecommerce web application for plant selling 🌱 
+
+
 
 
 ## 💻Tools and Technologies :
@@ -34,12 +36,20 @@ This is a simple ecommerce web application for plant selling 🌱
 
 *View Store
 
-*Add Items to the cart
+*Manage Shopping cart(Add/Update/Remove items)
 
 *Place order(Including dummy payment)
 
-## ✅Sample Screenshots :
+*View Order History(Icluding Paymment ,item details)
 
+## ✅Sample Screenshots :
+![Alt text](Plant-shop-springboot/src/main/resources/static/image/screenshots/ss1.png?raw=true "Title")
+
+![Alt text](Plant-shop-springboot/src/main/resources/static/image/screenshots/ss2.png?raw=true "Title")
+
+![Alt text](Plant-shop-springboot/src/main/resources/static/image/screenshots/ss3.png?raw=true "Title")
+
+![Alt text](Plant-shop-springboot/src/main/resources/static/image/screenshots/ss4.png?raw=true "Title")
 
 
 
