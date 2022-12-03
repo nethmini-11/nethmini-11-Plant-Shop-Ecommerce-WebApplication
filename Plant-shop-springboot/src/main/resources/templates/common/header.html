@@ -58,7 +58,7 @@
             <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/my-profile}">My Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out </a>
+            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> Sign Out </a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-dark" sec:authorize="hasRole('ADMIN')" th:href="@{/plant/plant-list}"> SELLER HOME</a>
