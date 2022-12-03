@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body>
+
+  <div th:replace="adminHome :: navbarAdmin"> </div>
+
+  <div class="container page-content">
+    <div class="card" style="width: 950px; height: auto; margin-bottom: 60px; border: 1px solid rgb(0, 175, 0);">
+      
+    <form th:action="@{/plant/add}" method="post" enctype="multipart/form-data">
+      
+      <fieldset>
+        <div class="legend">
+       <br>
+          ADD NEW PLANT
+        </div>
+              
+        <div class="form-group">
+          <label for="title" style="margin-left: 250px;">Title</label>
+          <div class="col-6" style="margin-left: 250px;">
+            <input type="text" class="form-control" id="title" name="title">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="category" style="margin-left: 250px;">Category</label>
+          <div class="col-6" style="margin-left: 250px;">
+            <input type="text" class="form-control" id="categories" name="category" data-role="tagsinput">
+          </div>
+          <div class="col-4" style="margin-left: 250px;">
+            <button type=button class="btn btn-primary btn-category badge badge-success mr-1 mb-1" th:each="item : ${allCategories}" 
+            th:text="${item}" th:id="item+${category}"></button>           
+          </div>          
+        </div>
+        <div class="form-group">
+          <label for="brand" style="margin-left: 250px;">Sizes</label>
+          <div class="col-6" style="margin-left: 250px;">
+            <input type="text" class="form-control" id="Sizes" name="Size" data-role="tagsinput">
+          </div>
+          <div class="col-4" style="margin-left: 250px;">
+            <button type=button class="btn btn-primary btn-Size badge badge-success mr-1 mb-1" th:each="item : ${#lists.sort(allSizes)}" th:text="${item}" th:id="Size+${item}"></button>           
+          </div>          
+        </div>
+        <div class="form-group">
+          <label for="price" style="margin-left: 250px;">Price</label>
+          <div class="col-6 input-group" style="margin-left: 250px;">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">LKR</span>
+            </div>
+            <input th:value="${plant.price}" type="number" name="price" step="0.1"
+  				class="form-control" id="price" placeholder="List Price" />
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="stock" style="margin-left: 250px;">Available stock</label>
+          <div class="col-6" style="margin-left: 250px;">
+            <input th:value="${plant.stock}" type="number"
+                        name="stock" class="form-control" id="stock"
+                        placeholder="Number of in-stock" />
+          </div>
+        </div>       
+        
+        <div class="form-group">
+          <label for="picture" style="margin-left: 250px;">Plant image link</label>
+          <div class="col-6" style="margin-left: 250px;">
+            <input type="text" class="form-control" id="picture" name="picture">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="offset-2 col-6" style="margin-left: 250px;">
+          	<button type="submit" class="btn btn-success">Add Plant</button>
+              <a class="btn btn-danger" th:href="@{/admin}">Cancel</a>
+          </div>
+        </div>
+    </fieldset>
+  </form></div>
+  </div>
+  <br>
+
+
+
+  <div th:replace="common/header :: body-scripts"> </div>
+  <script src="/js/tagsinput-custom.js"></script>
+  
+
+</body>
+</html>

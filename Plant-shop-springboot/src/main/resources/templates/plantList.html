@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body>
+
+  <div th:replace="adminHome :: navbarAdmin"> </div>
+
+  <div class="container page-content">
+    <table id="table-plant" class="table table-striped table-success table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Sizes</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Image</th>
+        <th>Edit / Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-th-each="plant : ${plants}">
+        <td th:text="${plant.title}"></td>
+        <td><div style="display:flex;"><span th:each="item : ${plant.categories}" 
+            th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td><div style="display:flex;"><span th:each="item : ${plant.Sizes}" 
+            th:text="${item.getValue()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+        <td th:text="${plant.price}"></td>
+        <td th:text="${plant.stock}"></td>
+        <td th:file="${plant.picture}"><img style="height: 50px;width:80px;" th:src="${plant.picture} " ></td>
+        <td><a th:href="@{/plant/edit?id=}+${plant.id}" class="btn btn-outline-success">EDIT</a>  
+            <a th:href="@{/plant/delete?id=}+${plant.id}" class="btn btn-outline-danger">DELETE </a> </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+
+  <div th:replace="common/header :: body-scripts"> </div>
+  
+  <script>
+  	$(document).ready(function() {
+	    $('#table-plant').DataTable({
+	    	stateSave: true
+	    });
+	} );
+  </script> 
+
+</body>
+</html>

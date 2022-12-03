@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+
+
+<body class="d-flex flex-column" >
+  <div th:replace="common/header :: navbar"> </div>
+ 
+  <div class="jumbotron jumbotron-fluid mt-0" th:style="'background-image: url(/image/background/cvr.png);'">
+  	<div class="container">
+      <div class="row text-left py-5">   
+         <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto">  
+            <h1 class="heading1">GO THE GREEN WAY</h1><br>
+            <h3 class="font-weight-bold">Let some fresh air into your home</h3><br>
+            <a th:href="@{/store}" class="btn btn-success rounded-pill" data-addclass-on-xs="btn-sm">BUY NOW</a>       
+          </div> 
+      </div>
+  </div>
+  </div>  
+   
+  
+  <section class="section py-5 ">
+    <div class="container text-center">
+      <h4 class="font-weight-bold ">Popular</h4>
+        <div class="featured-items mt-4">        
+          <div class="card border-success mb-3  card-product card-featured" th:each="plant : ${plants}" style="max-width: 18rem;">
+            <div class="card-body">
+              <a th:href="@{/plant-detail?id=}+${plant.id}"><img class="card-img-top" th:src="${plant.picture} ? ${plant.picture} : '/image/plant/itemexample.jpg'" alt="Card image cap"></a>
+              <a th:href="@{/plant-detail?id=}+${plant.id}" class="card-title" th:text="${plant.title}"></a>
+              <div class="price"><span th:text="'LKR'+${plant.price}" style="color: rgb(4, 136, 6);"></span></div>
+            </div>              
+          </div>
+        </div>
+    </div>
+  </section>
+  
+  
+   <!-- start section -->
+  <section class="section py-5 bg-white">
+    <div class="container">
+      <div class="row">
+            <h5 style="font-style: italic;color: rgb(2, 108, 3);margin-left: 260px;">"A beautiful plant is like having a friend around the house."</h5>       
+      </div>
+    </div> <!-- end container -->
+  </section> <!-- end section -->
+  
+  
+  <div th:replace="common/header :: footer"> </div>  
+  <div th:replace="common/header :: body-scripts"> </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.featured-items').slick({
+    	  infinite: true,
+    	  slidesToShow: 4,
+    	  slidesToScroll: 4,
+    	  responsive: [
+    	    {
+    	      breakpoint: 1200,
+    	      settings: {
+    	        slidesToShow: 3,
+    	        slidesToScroll: 3,
+    	      }
+    	    },
+    	    {
+    	      breakpoint: 768,
+    	      settings: {
+    	        slidesToShow: 2,
+    	        slidesToScroll: 2
+    	      }
+    	    },
+    	    {
+    	      breakpoint: 480,
+    	      settings: {
+    	        slidesToShow: 1,
+    	        slidesToScroll: 1
+    	      }
+    	    }    	    
+    	  ]
+      })
+      .on('setPosition', function (event, slick) {
+		slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+	});
+      $('.featured-brands').slick({
+    	  slidesToShow: 6,
+    	  slidesToScroll: 1,
+    	  responsive: [
+      	    {
+      	      breakpoint: 1200,
+      	      settings: {
+      	        slidesToShow: 5,
+      	        slidesToScroll: 1,
+      	      }
+      	    },
+      	    {
+      	      breakpoint: 992,
+      	      settings: {
+      	        slidesToShow: 4,
+      	        slidesToScroll: 4
+      	      }
+      	    },
+      	    {
+      	      breakpoint: 768,
+      	      settings: {
+      	        slidesToShow: 3,
+      	        slidesToScroll: 3
+      	      }
+      	    },
+      	  	{
+      	      breakpoint: 550,
+      	      settings: {
+      	        slidesToShow: 2,
+      	        slidesToScroll: 2
+      	      }
+      	    },
+      	  	{
+      	      breakpoint: 380,
+      	      settings: {
+      	        slidesToShow: 1,
+      	        slidesToScroll: 1
+      	      }
+      	    }, 
+      	  ]
+      });
+    });
+  </script>
+</body>
+</html>
